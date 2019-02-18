@@ -1,3 +1,17 @@
+import pandas as pd
+df = pd.read_csv("diamonds.csv")
+df = df.iloc[:8, :6]
+df.head()
+
+df["clarity"].str.len()
+df["clarity"].str.match("VS1")
+df["clarity"].str.lower()
+df["clarity"].str.isupper()
+df["clarity"].str.extract("([A-Z]{3,})")
+df["clarity"].str.extract("(^[A-Z]{2}[0-9])")
+df["clarity"].str.extract("([A-Z]{3,})").notnull()
+df["clarity"].str.contains("([A-Z]{3,})")
+
 #capitalize
 #cat
 #center
