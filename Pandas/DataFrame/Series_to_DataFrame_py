@@ -1,2 +1,3 @@
+import pandas as pd
 kkk = pd.Series([1, 2, 3, 4, 5])
 pd.DataFrame([kkk.values], columns = kkk.index)
