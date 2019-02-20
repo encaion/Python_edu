@@ -15,6 +15,8 @@ df["time"] = df["time"].apply(lambda x: dt.strptime(x, "%Y-%m-%d %H"))
 # 2
 df["time"] = df[["date", "hour"]].apply(lambda x: dt.strptime(' '.join(x), "%Y-%m-%d %H"), axis = 1)
 
+# ※ to_datetime()
+
 # 3
 df["time"] = df["date"].str.cat(df["hour"], " ")
 
