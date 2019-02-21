@@ -8,3 +8,7 @@ lm = ols(formula, df).fit()
 print(anova_lm(lm))
 
 df.boxplot(column = "price", by = "cut")
+
+from statsmodels.stats.multicomp import pairwise_tukeyhsd as hsd
+posthoc = hsd(df["price"], df["cut"], alpha = 0.05)
+print(posthoc)
