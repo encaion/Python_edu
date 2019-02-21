@@ -1,37 +1,21 @@
 import pandas as pd
+anti = pd.read_csv("Antibiotic_70K_patinets.csv")
+anti.head()
 
-df = pd.read_csv("hotel_booking_train_1m.csv")
-df.head(2)
-df.shape
-df.columns
+rate_mean = anti[["high_p", "age_5"]].groupby("age_5").mean()
+rate_mean.sort_values(by = "high_p", ascending = False)
+rate_mean.sort_values(by = "high_p", ascending = False).index[0]
 
-df.rename(columns = {"user_location_country": "country",
-                     "user_location_city": "city"}, inplace = True)
+anti.isna().sum().sum()
 
-df_co = df[["country", "city"]].groupby("country").agg(lambda x: len(set(x)))
-df_co 
+len(anti["ID"].unique()) == len(anti)
 
-def uni(x):
-    return len(set(x))
+anti.head()
+upper_2 = anti["total_d"].quantile(0.98)
 
-df_co = df[["country", "city"]].groupby("country").agg(lambda x: len(set(x)))
-df_co = df[["country", "city"]].groupby("country").agg(uni)
+sum(anti["total_d"] > upper_2)
 
-len(df.loc[df["country"] == 0, "city"].unique())
+anti.loc[anti["total_d"] > upper_2, "total_d"] = upper_2
 
-site_counts = df["site_name"].value_counts()
-site_counts[:10].index
-
-df_sub = df.loc[df["site_name"].isin(site_counts[:10].index), :]
-len(df_sub["site_name"].unique())
-
-
-df_sub.head()
-df_sub.columns
-book_ratio = pd.crosstab(df_sub["srch_adults_cnt"],
-                         df_sub["is_booking"],
-                         normalize = True)
-book_ratio.loc[book_ratio[1] == max(book_ratio[1]), :].index[0]
-
-
-
+import scipy.stats as ss
+ss.stats.pearsonr(anti["high_p"], anti["age_5"])
