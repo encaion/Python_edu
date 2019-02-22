@@ -1,0 +1,2 @@
+import sklearn.metrics as skm
+roc=roc_auc_score(y_test, model.predict_proba(X_test)[:,1])
