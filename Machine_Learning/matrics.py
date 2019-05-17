@@ -1,4 +1,5 @@
 from sklearn import metrics
-metrics.mean_absolute_error() # MAPE는 직접 계산
-metrics.mean_squared_error() # RMSE도 직접 계산
-# math.sqrt() 또는 **(0.5)
+metrics.mean_absolute_error() # MAE
+metrics.mean_absolute_error() * 100 # MAPE
+metrics.mean_squared_error() # MSE
+metrics.mean_squared_error() ** 0.5 # RMSE
