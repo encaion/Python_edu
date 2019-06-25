@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 df = pd.DataFrame(np.random.randn(10, 3), columns=['A', 'B', 'C'],
