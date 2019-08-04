@@ -32,4 +32,5 @@ for n in range(len(listt)):
 x_test_my = img_set
 y_test_my = [int(path[5:6]) for path in listt]
 
+model.predict_classes(x_test_my)
 model.evaluate(x_test_my, y_test_my)
