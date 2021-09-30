@@ -10,5 +10,5 @@ for s in lines:
 s_sub
 
 df_imgs = pd.DataFrame({"obs": range(len(s_sub)),
-                        "utl": s_sub})
+                        "url": s_sub})
 df_imgs.head()
