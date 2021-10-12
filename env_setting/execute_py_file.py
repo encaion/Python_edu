@@ -1,1 +1,0 @@
-runfile("./hello.py")
