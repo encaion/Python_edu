@@ -22,6 +22,9 @@ for n_edge in range(7, 20):
 
 pos = nx.spectral_layout(G)
 
+fig_size = dict(width = 400,
+                height = 300)
+
 edge_x = []
 edge_y = []
 for edge in G.edges():
@@ -72,4 +75,5 @@ fig = go.Figure(data = [edge_trace, node_trace],
                                    margin = dict(b = 0, l = 0, r = 0, t = 40),
                                    xaxis = dict(showgrid = False, zeroline = False, showticklabels = False),
                                    yaxis = dict(showgrid = False, zeroline = False, showticklabels = False)))
+fig.update_layout(width = fig_size["width"], height = fig_size["height"])
 fig.show()
