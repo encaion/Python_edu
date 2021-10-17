@@ -64,7 +64,8 @@ node_trace = go.Scatter(x = node_x, y = node_y,
 
 node_text = []
 for node, adjacencies in enumerate(G.adjacency()):
-    node_text.append("Deg.: " + str(len(adjacencies[1])))
+    node_text.append("#{node_number}, Deg.: {deg}".format(node_number = node,
+                                                          deg = str(len(adjacencies[1]))))
 
 node_trace.text = node_text
 
