@@ -33,9 +33,9 @@ node_trace = go.Scatter(x = node_x, y = node_y,
                         mode = "markers",
                         hoverinfo = "text",
                         marker = dict(showscale = True,
-                                      colorscale = "YlGnBu",
+                                      # colorscale = "YlGnBu",
                                       reversescale = True,
-                                      color = [],
+                                      color = ["#FF0000", "#00FF00", "#0000FF"],
                                       size = [10, 20, 30],
                                       colorbar = dict(thickness = 15,
                                                       title = "Node Connections",
@@ -43,19 +43,16 @@ node_trace = go.Scatter(x = node_x, y = node_y,
                                                       titleside = "right"),
                                       line_width = 2))
 
-node_adjacencies = []
 node_text = []
 for node, adjacencies in enumerate(G.adjacency()):
-    node_adjacencies.append(len(adjacencies[1]))
     node_text.append('Degree: ' + str(len(adjacencies[1])))
 
-node_trace.marker.color = node_adjacencies
 node_trace.text = node_text
-
 
 fig = go.Figure(data = [edge_trace, node_trace],
                 layout = go.Layout(showlegend = False,
                                    hovermode = "closest",
+                                   plot_bgcolor = "white",
                                    margin = dict(b = 0, l = 0, r = 0, t = 40),
                                    xaxis = dict(showgrid = False, zeroline = False, showticklabels = False),
                                    yaxis = dict(showgrid = False, zeroline = False, showticklabels = False)))
